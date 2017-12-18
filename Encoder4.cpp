@@ -16,7 +16,7 @@ void isr_process_encoder4(void)
     Encoder_4.pulsePosPlus();;
   }
 }
-double speed=85.0;
+double rotate_speed=85.0;
 
 void setup()
 {
@@ -37,18 +37,13 @@ void setup()
 }
 
 void loop(){
-    Encoder_4.runSpeed(speed);
+    Encoder_4.runSpeed(rotate_speed);
     Serial.print("Angular Speed :");
     Serial.print(Encoder_4.getCurrentSpeed());
     Serial.print(" , Angular Position:");
     Serial.print(Encoder_1.getCurPos());
-    _delay(0.5);
+    delay(500);
     _loop();
-}
-
-void _delay(float seconds){
-    long endTime = millis() + seconds * 1000;
-    while(millis() < endTime)_loop();
 }
 
 void loop()
