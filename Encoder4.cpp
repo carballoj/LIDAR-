@@ -1,34 +1,3 @@
-/**
- * \par Copyright (C), 2012-2016, MakeBlock
- * @file    Me_Megapi_encoder_pid_pos.ino
- * @author  MakeBlock
- * @version V1.0.0
- * @date    2016/07/14
- * @brief   Description: this file is sample code for Megapi encoder motor device.
- *
- * Function List:
- *    1. uint8_t MeEncoderOnBoard::getPortB(void);
- *    2. uint8_t MeEncoderOnBoard::getIntNum(void);
- *    3. void MeEncoderOnBoard::pulsePosPlus(void);
- *    4. void MeEncoderOnBoard::pulsePosMinus(void);
- *    5. void MeEncoderOnBoard::setMotorPwm(int pwm);
- *    6. double MeEncoderOnBoard::getCurrentSpeed(void);
- *    7. void MeEncoderOnBoard::setSpeedPid(float p,float i,float d);
- *    8. void MeEncoderOnBoard::setPosPid(float p,float i,float d);
- *    7. void MeEncoderOnBoard::setPosPid(float p,float i,float d);
- *    8. void MeEncoderOnBoard::setPulse(int16_t pulseValue);
- *    9. void MeEncoderOnBoard::setRatio(int16_t RatioValue);
- *    10. void MeEncoderOnBoard::moveTo(long position,float speed,int16_t extId,cb callback);
- *    11. void MeEncoderOnBoard::loop(void);
- *    12. long MeEncoderOnBoard::getCurPos(void);
- *
- * \par History:
- * <pre>
- * <Author>             <Time>        <Version>      <Descr>
- * Mark Yan             2016/07/14    1.0.0          build the new
- * Jorge de Francisco   2017/12/18    2.0.0          adapted
- * </pre>
- */
 #include <Arduino.h>
 #include <Wire.h>
 #include <SoftwareSerial.h>
@@ -75,6 +44,11 @@ void loop(){
     Serial.print(Encoder_1.getCurPos());
     _delay(0.5);
     _loop();
+}
+
+void _delay(float seconds){
+    long endTime = millis() + seconds * 1000;
+    while(millis() < endTime)_loop();
 }
 
 void loop()
