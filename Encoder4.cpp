@@ -41,7 +41,7 @@ void loop(){
     Serial.print("Angular Speed :");
     Serial.print(Encoder_4.getCurrentSpeed());
     Serial.print(" , Angular Position:");
-    Serial.print(Encoder_1.getCurPos());
+    Serial.print(Encoder_4.getCurPos());
     delay(500);
     _loop();
 }
