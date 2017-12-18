@@ -1,26 +1,3 @@
-/*------------------------------------------------------------------------------
-
-  LIDARLite Arduino Library
-  GetDistanceI2c
-
-  This example shows how to initialize, configure, and read distance from a
-  LIDAR-Lite connected over the I2C interface.
-
-  Connections:
-  LIDAR-Lite 5 Vdc (red) to Arduino 5v
-  LIDAR-Lite I2C SCL (green) to Arduino SCL
-  LIDAR-Lite I2C SDA (blue) to Arduino SDA
-  LIDAR-Lite Ground (black) to Arduino GND
-  
-  (Capacitor recommended to mitigate inrush current when device is enabled)
-  680uF capacitor (+) to Arduino 5v
-  680uF capacitor (-) to Arduino GND
-
-  See the Operation Manual for wiring diagrams and more information:
-  http://static.garmin.com/pumac/LIDAR_Lite_v3_Operation_Manual_and_Technical_Specifications.pdf
-
-------------------------------------------------------------------------------*/
-
 #include <Wire.h>
 #include <LIDARLite.h>
 
@@ -28,23 +5,10 @@ LIDARLite myLidarLite;
 
 void setup()
 {
-  Serial.begin(115200); // Initialize serial connection to display distance readings
+  Serial.begin(115200);
 
-  /*
-    begin(int configuration, bool fasti2c, char lidarliteAddress)
-
-    Starts the sensor and I2C.
-
-    Parameters
-    ----------------------------------------------------------------------------
-    configuration: Default 0. Selects one of several preset configurations.
-    fasti2c: Default 100 kHz. I2C base frequency.
-      If true I2C frequency is set to 400kHz.
-    lidarliteAddress: Default 0x62. Fill in new address here if changed. See
-      operating manual for instructions.
-  */
-  myLidarLite.begin(0, true); // Set configuration to default and I2C to 400 kHz
-
+  /* lidarliteAddress: Default 0x62. Fill in new address here if changed. Seeoperating manual for instructions.*/
+  myLidarLite.begin(0, true);
   /*
     configure(int configuration, char lidarliteAddress)
 
