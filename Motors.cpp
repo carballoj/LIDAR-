@@ -44,7 +44,7 @@ float getServoValue(int index, int type)
         		return mysmartservo.getAngleRequest(index);
     	}
 }
-\\Note!! Might have problem with same serial port 115200
+/*Note!! Might have problem with same serial port 115200*/
 void setup()
 {
     attachInterrupt(Encoder_4.getIntNum(), isr_process_encoder4, RISING);
@@ -86,7 +86,7 @@ void loop(){
     delay(500);
     _loop();
 }
-
+/*Note!! Might have problem with running different loops (delete Encoder_4.loop(); or have loop twice) */
 void loop()
 {
   Encoder_4.loop();
