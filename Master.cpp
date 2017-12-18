@@ -53,6 +53,9 @@ void setup()
     attachInterrupt(Encoder_4.getIntNum(), isr_process_encoder4, RISING);
     Serial.begin(115200);
   
+    myLidarLite.begin(0, true);
+    myLidarLite.configure(0);
+  
     //Set Pwm 8KHz
     TCCR1A = _BV(WGM10);
     TCCR1B = _BV(CS11) | _BV(WGM12);
@@ -63,7 +66,8 @@ void setup()
     mysmartservo.assignDevIdRequest();
     delay(50);
     mysmartservo.begin(115200);
-    mysmartservo.assignDevIdRequest();    mysmartservo.moveTo(1,-45,servo_speed);
+    mysmartservo.assignDevIdRequest();    
+    mysmartservo.moveTo(1,-45,servo_speed);
     
     Encoder_4.setPulse(8);
     Encoder_4.setRatio(46.67);
@@ -81,8 +85,10 @@ void loop(){
     if(((getServoValue(1,4))==(45))){
         mysmartservo.move(1,-90,servo_speed);
     }
-
-    Serial.print("Servo Position :");
+    
+    Serial.print("Laser distance :");
+    Serial.println(myLidarLite.distance());
+    Serial.print(" , Servo Position :");
     Serial.println(getServoValue(1,4));
     Serial.print(" , Encoder Position:");
     Serial.print(Encoder_1.getCurPos());
